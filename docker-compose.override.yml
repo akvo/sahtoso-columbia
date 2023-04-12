@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  mainnetwork:
+    image: alpine
+    command: tail -f /dev/null
+    ports:
+      - 3000:3000
+  frontend:
+    network_mode: service:mainnetwork
+    volumes:
+      - sahtoso-columbia-docker-sync:/app/node_modules:nocopy
+volumes:
+  sahtoso-columbia-docker-sync:
+    external: true

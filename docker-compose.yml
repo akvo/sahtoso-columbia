@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  frontend:
+    image: akvo/akvo-node-18-alpine:20220923.084347.0558ee6
+    stdin_open: true
+    command: ["./start.sh"]
+    volumes:
+      - ./app:/app:delegated
+    working_dir: /app
