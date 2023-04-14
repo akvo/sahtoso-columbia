@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Layout } from "antd";
+import { Route, Routes } from "react-router-dom";
+import { PDF_URL, POWER_BI_URL } from "./config";
+import { Logo, ResponsiveInlineFrame, SideMenu } from "./components";
 
-function App() {
+const { Sider } = Layout;
+
+const RouteList = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route
+        exact
+        path="/"
+        element={<ResponsiveInlineFrame src={POWER_BI_URL} />}
+      />
+      <Route path="/docs" element={<ResponsiveInlineFrame src={PDF_URL} />} />
+    </Routes>
   );
-}
+};
 
+const App = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
+  return (
+    <Layout
+      style={{
+        minHeight: "100vh",
+      }}
+    >
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+      >
+        <Logo />
+        <SideMenu />
+      </Sider>
+      <Layout className="site-layout">
+        <RouteList />
+      </Layout>
+    </Layout>
+  );
+};
 export default App;
