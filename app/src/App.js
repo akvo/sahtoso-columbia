@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { Layout } from "antd";
 import { Route, Routes } from "react-router-dom";
-import ResponsiveEmbed from "react-responsive-embed";
 import { PDF_URL, POWER_BI_URL } from "./config";
-import { Logo, SideMenu } from "./components";
+import { Logo, ResponsiveInlineFrame, SideMenu } from "./components";
 
 const { Sider } = Layout;
 
 const RouteList = () => {
   return (
     <Routes>
-      <Route exact path="/" element={<ResponsiveEmbed src={POWER_BI_URL} />} />
-      <Route path="/docs" element={<ResponsiveEmbed src={PDF_URL} />} />
+      <Route
+        exact
+        path="/"
+        element={<ResponsiveInlineFrame src={POWER_BI_URL} />}
+      />
+      <Route path="/docs" element={<ResponsiveInlineFrame src={PDF_URL} />} />
     </Routes>
   );
 };
