@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/**
+Antd custom css
+*/
+.ant-layout .ant-layout-sider {
+  background-color: #324556;
+}
+.ant-layout .ant-layout-sider-trigger {
+  background-color: #527A9A;
+}
