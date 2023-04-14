@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Layout } from "antd";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { PDF_URL, POWER_BI_URL } from "./config";
 import { Logo, ResponsiveInlineFrame, SideMenu } from "./components";
 
@@ -33,7 +33,9 @@ const App = () => {
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <SideMenu />
       </Sider>
       <Layout className="site-layout">
