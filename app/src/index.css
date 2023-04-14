@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.ant-layout.site-layout {
+  background-color: #F5F1F1;
+  justify-content: center;
+}
 /**
 Antd custom css
 */
