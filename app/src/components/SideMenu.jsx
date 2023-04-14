@@ -1,6 +1,7 @@
 import { Menu, ConfigProvider } from "antd";
 import { FileOutlined, PieChartOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function getItem(label, key, icon, children) {
   return {
@@ -16,7 +17,16 @@ const items = [
   getItem("Guideline", "docs", <FileOutlined />),
 ];
 
+const pathKeys = {
+  home: "/",
+  docs: "/docs",
+};
+
 const SideMenu = () => {
+  const { pathname } = useLocation();
+  const px = Object.values(pathKeys).findIndex((p) => p === pathname);
+  const path = Object.keys(pathKeys)[px] || "home";
+  const [selectedKeys, setSelectedKeys] = useState([path]);
   const navigate = useNavigate();
 
   const handleOnClick = ({ key }) => {
@@ -40,10 +50,11 @@ const SideMenu = () => {
       }}
     >
       <Menu
-        defaultSelectedKeys={["home"]}
+        selectedKeys={selectedKeys}
         mode="inline"
         items={items}
         onClick={handleOnClick}
+        onSelect={({ selectedKeys: keys }) => setSelectedKeys(keys)}
       />
     </ConfigProvider>
   );
