@@ -15,7 +15,13 @@ jobs:
     needs: yarn-operation
     uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
     secrets: inherit
+    with:
+      app-name: sahtoso-columbia
+      service-name: frontend
   rollout:
     needs: build-push
     uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
     secrets: inherit
+    with:
+      app-name: sahtoso-columbia
+      service-name: frontend
