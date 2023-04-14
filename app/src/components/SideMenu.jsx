@@ -1,7 +1,7 @@
 import { Menu, ConfigProvider } from "antd";
 import { FileOutlined, PieChartOutlined } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function getItem(label, key, icon, children) {
   return {
@@ -36,6 +36,12 @@ const SideMenu = () => {
       navigate(`/${key}`);
     }
   };
+
+  useEffect(() => {
+    if (!selectedKeys?.includes(path)) {
+      setSelectedKeys([path]);
+    }
+  }, [selectedKeys, path]);
 
   return (
     <ConfigProvider
