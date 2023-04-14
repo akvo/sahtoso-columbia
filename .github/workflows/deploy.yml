@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [synchronize]
+
+jobs:
+  yarn-operation:
+    uses: akvo/main-github-workflow/.github/workflows/yarn-operation.yml@main
+    secrets: inherit
+  build-push:
+    needs: yarn-operation
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    secrets: inherit
+  rollout:
+    needs: build-push
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    secrets: inherit
