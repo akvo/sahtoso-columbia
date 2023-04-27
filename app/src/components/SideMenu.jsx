@@ -13,8 +13,8 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem("Dashboard", "home", <PieChartOutlined />),
-  getItem("Guideline", "docs", <FileOutlined />),
+  getItem("Tablero", "home", <PieChartOutlined />),
+  getItem("Manual de uso", "docs", <FileOutlined />),
 ];
 
 const pathKeys = {
