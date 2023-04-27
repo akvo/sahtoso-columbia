@@ -3,6 +3,7 @@ import { Layout } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
 import { PDF_URL, POWER_BI_URL } from "./config";
 import { Logo, ResponsiveInlineFrame, SideMenu } from "./components";
+import './App.css';
 
 const { Sider } = Layout;
 
