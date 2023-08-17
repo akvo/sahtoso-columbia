@@ -9,19 +9,21 @@ on:
 
 jobs:
   yarn-operation:
-    uses: akvo/main-github-workflow/.github/workflows/yarn-operation.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/yarn-operation.yml@v0.1
     secrets: inherit
   build-push:
     needs: yarn-operation
-    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@v0.1
     secrets: inherit
     with:
-      app-name: sahtoso-columbia
-      service-name: frontend
+      app-name: "sahtoso-columbia"
+      service-name: "frontend"
+      dockerfile-location: "Dockerfile"
   rollout:
     needs: build-push
-    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@v0.1
     secrets: inherit
     with:
-      app-name: sahtoso-columbia
-      service-name: frontend
+      app-name: "sahtoso-columbia"
+      service-name: "frontend"
+      cluster-name: "production"
